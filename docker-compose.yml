@@ -1,0 +1,50 @@
+services: 
+  invoices-app:
+    image: invoices-app
+    container_name: invoices-app
+    ports:
+      - 3000:3000
+    networks:
+      - invoices_networks
+    depends_on:
+      - invoices-api
+
+  invoices-api:
+    image: invoices-api
+    container_name: invoices-api
+    environment:
+      - DATABASE_URL=postgres://admin:admin@invoices-db:5432/invoices;
+    ports:
+      - 5000:5000
+    networks:
+      - invoices_networks
+    depends_on:
+      - invoices-db
+
+  invoices-db:
+    image: postgres:latest
+    container_name: invoices-db
+    environment:
+      POSTGRES_DB: invoices
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    networks:
+      - invoices_networks
+
+  invoices-dbmanager:
+    image: dpage/pgadmin4:latest
+    container_name: invoices-dbmanager
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - invoices-db
+    networks:
+      - invoices_networks
+
+networks:
+  invoices_networks: {}

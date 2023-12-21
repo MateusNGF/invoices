@@ -1,0 +1,39 @@
+
+
+
+.btn-component {
+    padding: 10px 20px 10px 20px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+}
+.btn-type-sucess {
+    background-color: #00FF77;
+    color: rgb(30, 30, 30);
+    cursor: pointer;
+}
+
+.btn-type-sucess:hover {
+    background-color: #0fe673;
+}
+
+.btn-type-error {
+    background-color: #FFC7C2;
+    color: rgb(30, 30, 30);
+    cursor: pointer;
+}
+
+.btn-type-error:hover {
+    background-color: #FFB5B0;
+}
+
+.btn-size-small {
+    font-size: 10px;
+    justify-content: center;
+}
+
+.btn-size-large {
+    font-size: 20px;
+    justify-content: center;
+}

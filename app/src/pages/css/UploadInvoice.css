@@ -1,0 +1,28 @@
+
+
+.container-upload-invoice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    align-content: center;
+}
+
+.container-upload-invoice  .content-upload-invoice {
+    width: 50%;
+    background-color: #C3FED7;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    justify-content: center;
+}
+
+.container-upload-invoice  .content-upload-invoice input {
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+}
+
+.container-upload-invoice .content-upload-invoice .footer-upload-invoice {
+    margin: 10px;
+}

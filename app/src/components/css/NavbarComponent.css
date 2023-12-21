@@ -1,0 +1,44 @@
+
+
+
+.navbar {
+    display: flex;
+    background-color: #14AE5C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 3rem 0px 3rem;
+}
+
+.navbar .pages {
+    width: 50%;
+    height: 5rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar a {
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    color: aliceblue;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: black;
+}
+
+.navbar .navbar-btn-sucess {
+    padding: 10px 20px 10px 20px;
+    background-color: #026430;
+    color: aliceblue;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 7px;
+    border: none;
+    font-weight:  normal;
+}

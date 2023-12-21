@@ -1,0 +1,35 @@
+
+
+
+.table-invoices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.table-invoices table {
+    background-color: #C3FED7;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.table-invoices table thead {
+    font-weight: 600;
+}
+.table-invoices tr {
+    /* display: flex;
+    justify-content: space-between; */
+    font-size: 20px;
+}
+
+
+.table-invoices tr td {
+    text-align: center;
+    justify-content: center;
+
+}
