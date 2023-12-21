@@ -10,10 +10,11 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "npm run prisma:table && node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "dck:img": "npm run build && docker build -t invoices-api .",
-    "prisma:deploy": "npx prisma generate && npx prisma migrate deploy"
+    "prisma:deploy": "npx prisma generate && npx prisma migrate deploy",
+    "prisma:table": "npx prisma migrate dev"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
