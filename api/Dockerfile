@@ -5,6 +5,7 @@ WORKDIR app
 COPY package-lock.json .
 COPY package.json .
 COPY dist dist
+COPY prisma prisma
 COPY .env .
 
 RUN npm install --production

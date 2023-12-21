@@ -9,3 +9,18 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Invoice {
+  id                     Int      @id @default(autoincrement())
+  number_invoice         String
+  number_client          String
+  competency             DateTime
+  energy_electrical      String
+  energy_scee            String
+  energy_compensated     String
+  municipal_contribution Float
+  total_price            Float
+  created_at             DateTime? @default(now())
+
+  @@map("invoices")
+}
