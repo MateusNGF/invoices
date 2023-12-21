@@ -13,7 +13,7 @@ services:
     image: invoices-api
     container_name: invoices-api
     environment:
-      - DATABASE_URL=postgres://admin:admin@invoices-db:5432/invoices;
+      - DATABASE_URL=postgres://admin:admin@invoices-db:5432/invoice-production;
     ports:
       - 5000:5000
     networks:
@@ -25,7 +25,6 @@ services:
     image: postgres:latest
     container_name: invoices-db
     environment:
-      POSTGRES_DB: invoices
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
     ports:
