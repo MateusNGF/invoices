@@ -1,6 +1,7 @@
 export class Invoice {
     id?: string
     numberInvoice: string
+    serieInvoice: string
     numberClient: string
     competency: Date
     energyElectrical: Invoice.ContentInfo

@@ -11,8 +11,9 @@ datasource db {
 }
 
 model Invoice {
-  id                     Int      @id @default(autoincrement())
+  id                     Int       @id @default(autoincrement())
   number_invoice         String
+  serie_invoice          String    @default("")
   number_client          String
   competency             DateTime
   energy_electrical      String
