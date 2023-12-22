@@ -1,0 +1,10 @@
+
+
+
+.conteinar-preview {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    justify-content: space-around;
+}
