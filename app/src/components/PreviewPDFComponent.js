@@ -7,7 +7,7 @@ export default function PreviewPDFComponent({
         <div className="conteinar-preview">
             {srcs.map((src, index) => {
                 console.log(src)
-                return <embed className="preview-embed" src={src} type="application/pdf"/>
+                return <embed className="preview-embed" src={src} type="application/pdf" itemScope='true' width='100%' height="100%"/>
             })}
         </div>
     )
