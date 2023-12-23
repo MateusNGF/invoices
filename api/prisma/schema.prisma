@@ -11,17 +11,18 @@ datasource db {
 }
 
 model Invoice {
-  id                     Int       @id @default(autoincrement())
-  number_invoice         String
-  serie_invoice          String    @default("")
-  number_client          String
-  competency             DateTime
-  energy_electrical      String
-  energy_scee            String
-  energy_compensated     String
-  municipal_contribution Float
-  total_price            Float
-  created_at             DateTime? @default(now())
+  id                    Int       @id @default(autoincrement())
+  numberInvoice         String    @map("number_invoice")
+  serieInvoice          String    @default("") @map("serie_invoice")
+  numberClient          String    @map("number_client")
+  competency            DateTime
+  energyElectrical      String    @map("energy_electrical")
+  energyScee            String    @map("energy_scee")
+  energyCompensated     String    @map("energy_compensated")
+  municipalContribution Float     @map("municipal_contribution")
+  totalPrice            Float     @map("total_price")
+  fileName              String    @default("") @map("file_name")
+  createdAt             DateTime? @default(now()) @map("created_at")
 
   @@map("invoices")
 }

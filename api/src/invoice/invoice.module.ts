@@ -3,6 +3,7 @@ import { InvoiceService } from './invoice.service';
 import { InvoiceController } from './invoice.controller';
 import { PrismaService } from 'src/database/prisma.service';
 import { MulterModule } from '@nestjs/platform-express';
+import { InvoiceRepository } from './invoice.repository';
 
 
 @Module({
@@ -14,6 +15,6 @@ import { MulterModule } from '@nestjs/platform-express';
     })
   ],
   controllers: [InvoiceController],
-  providers: [InvoiceService, PrismaService],
+  providers: [InvoiceService, PrismaService, InvoiceRepository],
 })
 export class InvoiceModule {}

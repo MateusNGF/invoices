@@ -25,6 +25,7 @@ services:
     image: postgres:latest
     container_name: invoices-db
     environment:
+      POSTGRES_DB: invoice-production
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
     ports:

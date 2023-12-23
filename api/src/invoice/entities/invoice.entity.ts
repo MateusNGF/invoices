@@ -9,13 +9,15 @@ export class Invoice {
     energyCompensated: Invoice.ContentInfo
     municipalContribution: number
     totalPrice: number
+    fileName?: string
     createdAt?: Date
 }
 
 
 export namespace Invoice {
     export interface ContentInfo {
-        quantityKwh : number
-        price        : number
+        quantity: number
+        price: number
+        unit: string
     }
 }
