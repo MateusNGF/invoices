@@ -18,6 +18,15 @@ export class InvoiceService {
     return this.repository.listInvoices(params)
   }
 
+  async deleteInvoice(id: number) {
+    try{
+      await this.repository.deleteInvoice(id)
+      return true
+    }catch(e){
+      return false
+    }
+  }
+
   async processInformationPDFtoJSON(fileInformation: Express.Multer.File) {
     const lines = await ParsePDFContent(readFileSync(fileInformation.path))
     const invoice = this.extractInformationFromContent(lines)
@@ -58,7 +67,7 @@ export class InvoiceService {
     }
 
     let isPDFValid = false;
-    content.forEach((line, index) => {
+    content.forEach(async (line, index) => {
 
       if (line.match(regexCustom('TOTAL'))) {
         const lineContentSplited = content[index].split(' ').filter(Boolean)

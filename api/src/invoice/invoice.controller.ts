@@ -1,12 +1,13 @@
-import { Controller, Post, Body, UseInterceptors, UploadedFile, Get} from '@nestjs/common';
+import { Controller, Post, Body, UseInterceptors, UploadedFile, Get, Query, Delete } from '@nestjs/common';
 import { InvoiceService } from './invoice.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { FileInterceptor } from '@nestjs/platform-express'
 import { diskStorage } from 'multer';
+import { readFileSync } from 'fs';
 
 @Controller('invoice')
 export class InvoiceController {
-  constructor(private readonly invoiceService: InvoiceService) {}
+  constructor(private readonly invoiceService: InvoiceService) { }
 
   @Post()
   create(@Body() createInvoiceDto: CreateInvoiceDto) {
@@ -14,14 +15,30 @@ export class InvoiceController {
   }
 
   @Get()
-  async list(@Body() query : any) {
+  async list(
+    @Query('skip') skip: string,
+    @Query('take') take: string,
+    @Query('text') text: string,
+    @Query('where') where: any,
+    @Query('startDate') startDate: string,
+    @Query('endDate') endDate: string
+  ) {
     return await this.invoiceService.listInvoices({
-      skip: query?.skip ?? 0,
-      take: query?.take ?? 10,
-      text: query.text,
-      where: query.where,
-      orderBy: query.orderBy
+      skip: skip ? parseInt(skip) : 0,
+      take: take ? parseInt(take) : 10,
+      text:
+        (text && text !== 'null') ? text : null,
+      startDate:
+        (startDate && startDate !== 'null') ? new Date(startDate).toISOString() : null,
+      endDate:
+        (endDate && endDate !== 'null') ? new Date(endDate).toISOString() : null,
+      where: where ? JSON.parse(where) : null
     })
+  }
+
+  @Delete()
+  async deleteInvoice(@Query('id') id: any) {
+    return await this.invoiceService.deleteInvoice(parseInt(id))
   }
 
   @Post('/upload')
@@ -35,10 +52,15 @@ export class InvoiceController {
     })
   }))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    try{
-      return  await this.invoiceService.processInformationPDFtoJSON(file)
-    }catch(e){
+    try {
+      return await this.invoiceService.processInformationPDFtoJSON(file)
+    } catch (e) {
       console.error(e)
     }
+  }
+
+  @Get('/download')
+  async downloadFile(@Query('filename') filename: string) {
+    return readFileSync(` ${filename}`)
   }
 }
