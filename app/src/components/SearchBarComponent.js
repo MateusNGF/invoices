@@ -1,22 +1,49 @@
 import './css/SearchBarComponent.css'
 
-export default function SearchBarComponent({ onSearchByText , onChangeDate}) {
+export default function SearchBarComponent({ onSearch }) {
+    const getContentOfDatesInputs = (target) => {
+        const startDate = document.getElementById('start-date-input').value
+        const endDate = document.getElementById('end-date-input').value
+        const text = document.getElementById('input-text').value
+
+        onSearch({
+            startDate,
+            endDate,
+            text
+        })
+    }
+
+
     return (
-            <div className="search-bar">
-                <div className="input-bar">
-                    <input id="input1" type="text" placeholder="nº do cliente..."></input>
-                    <button onClick={onSearchByText}>Filtrar</button>
+        <div className="search-bar">
+            <div className="input-bar">
+                <input id="input-text"
+                    type="text"
+                    placeholder="nº do cliente..."
+                    onKeyDown={getContentOfDatesInputs}
+                />
+                <button onClick={getContentOfDatesInputs}>Filtrar</button>
+            </div>
+            <div className="date-bar">
+                <div className='date-picker-in'>
+                    <label>DE</label>
+                    <input
+                        type="month"
+                        id='start-date-input'
+                        name="month-year"
+                        onChange={getContentOfDatesInputs}
+                    />
                 </div>
-                <div className="date-bar">
-                    <div className='date-picker-in'>
-                        <label>DE</label>
-                        <input type="month" onChange={onChangeDate} name="month-year" />
-                    </div>
-                    <div className='date-picker-out'>
-                        <label>ATÉ</label>
-                        <input type="month" name="month-year"></input>
-                    </div>
+                <div className='date-picker-out'>
+                    <label>ATÉ</label>
+                    <input
+                        type="month"
+                        id='end-date-input'
+                        name="month-year"
+                        onChange={getContentOfDatesInputs}
+                    />
                 </div>
             </div>
+        </div>
     )
 }
