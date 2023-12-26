@@ -63,12 +63,19 @@ export class InvoiceRepository {
       }
     }
 
-    return this.database.invoice.findMany({
+    const data = await this.database.invoice.findMany({
       skip,
       take,
       where: _where,
       orderBy,
     });
+
+    return data.map(item => ({
+      ...item,
+      energyElectrical: JSON.parse(item.energyElectrical),
+      energyScee: JSON.parse(item.energyScee),
+      energyCompensated: JSON.parse(item.energyCompensated),
+    }))
   }
 
   deleteInvoice(id: number) {
