@@ -35,13 +35,11 @@ export class InvoiceRepository {
   }) {
     let { skip, take, text, where, orderBy, startDate, endDate } = params;
 
-    let _where: any = {
-      ...where
-    }
+    orderBy = orderBy ? orderBy : { competency: 'asc' }
 
     if (text) {
-      _where = {
-        ..._where,
+      where = {
+        ...where,
         OR :[
           {
             numberClient: { contains: text, mode: 'insensitive' }
@@ -54,8 +52,8 @@ export class InvoiceRepository {
     }
 
     if (startDate && endDate) {
-      _where = {
-        ..._where,
+      where = {
+        ...where,
         competency: {
           gte: startDate,
           lte: endDate,
@@ -66,7 +64,7 @@ export class InvoiceRepository {
     const data = await this.database.invoice.findMany({
       skip,
       take,
-      where: _where,
+      where,
       orderBy,
     });
 

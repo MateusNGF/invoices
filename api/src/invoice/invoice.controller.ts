@@ -32,7 +32,7 @@ export class InvoiceController {
         (startDate && startDate !== 'null') ? new Date(startDate).toISOString() : null,
       endDate:
         (endDate && endDate !== 'null') ? new Date(endDate).toISOString() : null,
-      where: where ? JSON.parse(where) : null
+      where: JSON.parse(where) ?? {}
     })
   }
 
