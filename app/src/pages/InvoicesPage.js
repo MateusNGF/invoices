@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import LoadingIndicator from "../components/LoadComponent";
 import SearchBarComponent from "../components/SearchBarComponent";
 import TableInvoices from "../components/TableInvoices";
-import LoadingIndicator from "../components/LoadComponent";
-import ApiService from '../utils/Api'
+import ApiService from '../utils/Api';
 
 export default function InvoicesPage() {
     const [listInvoices, setListInvoices] = useState([])
@@ -43,7 +43,7 @@ export default function InvoicesPage() {
                 <LoadingIndicator title="Carregando lista de faturas" /> :
                 <TableInvoices
                     data={listInvoices}
-                    fnDonwload={(item) => {
+                    fnDonwload={() => {
 
                     }}
                     fnDelete={async (item) => {

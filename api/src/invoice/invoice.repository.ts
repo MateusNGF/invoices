@@ -1,10 +1,9 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/database/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class InvoiceRepository {
-
-  constructor(private readonly database: PrismaService) { }
+  constructor(private readonly database: PrismaService) {}
 
   create(contentEntity: any) {
     return this.database.invoice.create({
@@ -18,37 +17,36 @@ export class InvoiceRepository {
         energyCompensated: JSON.stringify(contentEntity?.energyCompensated),
         municipalContribution: contentEntity?.municipalContribution,
         fileName: contentEntity?.fileName,
-        totalPrice: contentEntity?.totalPrice
-      }
-    })
+        totalPrice: contentEntity?.totalPrice,
+      },
+    });
   }
-
 
   async listInvoices(params: {
     skip?: number;
     take?: number;
-    text?: string,
-    startDate?: string,
-    where ?: any,
-    endDate?: string,
+    text?: string;
+    startDate?: string;
+    where?: any;
+    endDate?: string;
     orderBy?: any;
   }) {
     let { skip, take, text, where, orderBy, startDate, endDate } = params;
 
-    orderBy = orderBy ? orderBy : { competency: 'asc' }
+    orderBy = orderBy ? orderBy : { competency: 'asc' };
 
     if (text) {
       where = {
         ...where,
-        OR :[
+        OR: [
           {
-            numberClient: { contains: text, mode: 'insensitive' }
+            numberClient: { contains: text, mode: 'insensitive' },
           },
           {
-            numberInvoice: { contains: text, mode: 'insensitive' }
-          }
-        ]
-      }
+            numberInvoice: { contains: text, mode: 'insensitive' },
+          },
+        ],
+      };
     }
 
     if (startDate && endDate) {
@@ -57,8 +55,8 @@ export class InvoiceRepository {
         competency: {
           gte: startDate,
           lte: endDate,
-        }
-      }
+        },
+      };
     }
 
     const data = await this.database.invoice.findMany({
@@ -68,17 +66,17 @@ export class InvoiceRepository {
       orderBy,
     });
 
-    return data.map(item => ({
+    return data.map((item) => ({
       ...item,
       energyElectrical: JSON.parse(item.energyElectrical),
       energyScee: JSON.parse(item.energyScee),
       energyCompensated: JSON.parse(item.energyCompensated),
-    }))
+    }));
   }
 
   deleteInvoice(id: number) {
     return this.database.invoice.delete({
-      where: {id}
-    })
+      where: { id },
+    });
   }
 }

@@ -1,10 +1,10 @@
-import './css/UploadInvoicePage.css'
-import { useState } from 'react'
 import axios from 'axios'
+import { useState } from 'react'
+import './css/UploadInvoicePage.css'
 
 import ButtonAction from '../components/ButtonComponent'
 import LoadingIndicator from '../components/LoadComponent'
-import PreviewPDFComponent from '../components/PreviewPDFComponent';
+import PreviewPDFComponent from '../components/PreviewPDFComponent'
 
 export default function UploadInvoice() {
     const [fileSelected, setFileSelect] = useState(null);
