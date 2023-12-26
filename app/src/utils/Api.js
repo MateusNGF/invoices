@@ -1,5 +1,5 @@
 class ApiService {
-    #url_api = `http://localhost:5000`
+    #url_api = process.env.REACT_APP_API_URL
 
     async listInvoicesByFilters(filters){
         const params = new URLSearchParams({
