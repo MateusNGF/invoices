@@ -1,8 +1,8 @@
 import './App.css';
 import Dashboard from './pages/Dashboard';
-import Invoices from './pages/Invoices';
 import Navbar from './components/NavbarComponent';
 import UploadInvoice from './pages/UploadInvoice';
+import InvoicesList from './pages/InvoicesList';
 
 function App() {
   let ComponentToRender = null
@@ -12,7 +12,7 @@ function App() {
       ComponentToRender = Dashboard
       break;
     case '/invoices':
-      ComponentToRender = Invoices
+      ComponentToRender = InvoicesList
       break;
     case '/upload-invoices':
       ComponentToRender = UploadInvoice
