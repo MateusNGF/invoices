@@ -49,9 +49,3 @@ export default function TableInvoices({ data, fnDonwload, fnDelete }) {
       </div>
   )
 }
-
-
-
-function Table({ data }){
-  
-}
