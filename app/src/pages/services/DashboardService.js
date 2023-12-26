@@ -5,7 +5,7 @@ class DashboardService {
     calculateTotalQuantityEnergyConsumed(invoicesInMonth = []) {
         let debug = invoicesInMonth.map(month =>
             month.reduce((acc, invoice) =>
-                acc + (invoice.energyElectrical?.quantity + invoice.energyScee?.quantity)
+                 acc + (invoice.energyElectrical?.quantity  + invoice.energyScee?.quantity)
                 , 0))
     
         return debug

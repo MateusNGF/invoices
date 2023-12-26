@@ -1,0 +1,110 @@
+[
+    [
+        {
+            "id": 1,
+            "numberInvoice": "047098955",
+            "serieInvoice": "000",
+            "numberClient": "7005400387",
+            "competency": "2023-06-01T00:00:00.000Z",
+            "energyElectrical": {
+                "quantity": 50,
+                "price": 43.28,
+                "unit": "kWh"
+            },
+            "energyScee": {
+                "quantity": 1.007,
+                "price": 652.55,
+                "unit": "kWh"
+            },
+            "energyCompensated": {
+                "quantity": 1.007,
+                "price": -620,
+                "unit": "kWh"
+            },
+            "municipalContribution": 49.43,
+            "totalPrice": 125.26,
+            "fileName": "1703614388449.pdf",
+            "createdAt": "2023-12-26T18:13:08.628Z"
+        },
+        {
+            "id": 2,
+            "numberInvoice": "055673533",
+            "serieInvoice": "000",
+            "numberClient": "7005400387",
+            "competency": "2023-07-01T00:00:00.000Z",
+            "energyElectrical": {
+                "quantity": 50,
+                "price": 47.96,
+                "unit": "kWh"
+            },
+            "energyScee": {
+                "quantity": 739,
+                "price": 378.28,
+                "unit": "kWh"
+            },
+            "energyCompensated": {
+                "quantity": 739,
+                "price": -360.13,
+                "unit": "kWh"
+            },
+            "municipalContribution": 49.43,
+            "totalPrice": 115.54,
+            "fileName": "1703614396922.pdf",
+            "createdAt": "2023-12-26T18:13:16.984Z"
+        }
+    ],
+    [
+        {
+            "id": 3,
+            "numberInvoice": "056670797",
+            "serieInvoice": "000",
+            "numberClient": "7202187422",
+            "competency": "2023-07-01T00:00:00.000Z",
+            "energyElectrical": {
+                "quantity": 50,
+                "price": 47.96,
+                "unit": "kWh"
+            },
+            "energyScee": {
+                "quantity": 297,
+                "price": 152.02,
+                "unit": "kWh"
+            },
+            "energyCompensated": {
+                "quantity": 297,
+                "price": -144.73,
+                "unit": "kWh"
+            },
+            "municipalContribution": 49.43,
+            "totalPrice": 97.91,
+            "fileName": "1703629594584.pdf",
+            "createdAt": "2023-12-26T22:26:34.763Z"
+        },
+        {
+            "id": 4,
+            "numberInvoice": "076816325",
+            "serieInvoice": "000",
+            "numberClient": "7202788969",
+            "competency": "2023-09-01T00:00:00.000Z",
+            "energyElectrical": {
+                "quantity": 50,
+                "price": 47.78,
+                "unit": "kWh"
+            },
+            "energyScee": {
+                "quantity": 862,
+                "price": 439.63,
+                "unit": "kWh"
+            },
+            "energyCompensated": {
+                "quantity": 862,
+                "price": -420.07,
+                "unit": "kWh"
+            },
+            "municipalContribution": 41.19,
+            "totalPrice": 109.79,
+            "fileName": "1703629600625.pdf",
+            "createdAt": "2023-12-26T22:26:40.697Z"
+        }
+    ]
+]
