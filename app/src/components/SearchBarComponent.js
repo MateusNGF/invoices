@@ -20,9 +20,16 @@ export default function SearchBarComponent({ onSearch }) {
                 <input id="input-text"
                     type="text"
                     placeholder="nº do cliente..."
-                    onKeyDown={getContentOfDatesInputs}
+                    onChange={getContentOfDatesInputs}
+                    data-testid="input-text"
                 />
-                <button onClick={getContentOfDatesInputs}>Filtrar</button>
+                <button
+                    id='search-button'
+                    data-testid="search-button"
+                    onClick={getContentOfDatesInputs}
+                >
+                    Filtrar
+                </button>
             </div>
             <div className="date-bar">
                 <div className='date-picker-in'>
@@ -30,6 +37,7 @@ export default function SearchBarComponent({ onSearch }) {
                     <input
                         type="month"
                         id='start-date-input'
+                        data-testid="input-start-date"
                         name="month-year"
                         onChange={getContentOfDatesInputs}
                     />
@@ -39,6 +47,7 @@ export default function SearchBarComponent({ onSearch }) {
                     <input
                         type="month"
                         id='end-date-input'
+                        data-testid="input-end-date"
                         name="month-year"
                         onChange={getContentOfDatesInputs}
                     />
