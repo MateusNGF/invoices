@@ -42,7 +42,14 @@ export class InvoiceRepository {
     if (text) {
       _where = {
         ..._where,
-        numberClient: { contains: text, mode: 'insensitive' }
+        OR :[
+          {
+            numberClient: { contains: text, mode: 'insensitive' }
+          },
+          {
+            numberInvoice: { contains: text, mode: 'insensitive' }
+          }
+        ]
       }
     }
 
