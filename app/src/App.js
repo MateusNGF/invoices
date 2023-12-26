@@ -1,24 +1,25 @@
 import './App.css';
-import Dashboard from './pages/Dashboard';
 import Navbar from './components/NavbarComponent';
-import UploadInvoice from './pages/UploadInvoice';
-import InvoicesList from './pages/InvoicesList';
+
+import DashboardPage from './pages/DashboardPage';
+import UploadInvoicePage from './pages/UploadInvoicePage';
+import InvoicesPage from './pages/InvoicesPage';
 
 function App() {
   let ComponentToRender = null
   
   switch (window.location.pathname){
     case '/dashboard':
-      ComponentToRender = Dashboard
+      ComponentToRender = DashboardPage
       break;
     case '/invoices':
-      ComponentToRender = InvoicesList
+      ComponentToRender = InvoicesPage
       break;
     case '/upload-invoices':
-      ComponentToRender = UploadInvoice
+      ComponentToRender = UploadInvoicePage
       break;
     default:
-      ComponentToRender = Dashboard
+      ComponentToRender = DashboardPage
   }
 
 

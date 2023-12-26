@@ -14,3 +14,8 @@ Then, in the root of the project, run the following command to build the applica
 
 This command will initialize the frontend application in React, the backend in Node, the database in Postgres and, finally, a database manager to be able to access the database, which is not necessary for initialization and becomes an aid in debugging. 
 
+
+ANOTAÇÕES
+* o versionamento foi feito baseando em monorepo
+* o sistema não foi planeja para variação de unidade de medida.
+* não foi implementado sistema de ordenação

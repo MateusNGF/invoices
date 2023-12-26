@@ -4,7 +4,7 @@ import TableInvoices from "../components/TableInvoices";
 import LoadingIndicator from "../components/LoadComponent";
 import ApiService from '../utils/Api'
 
-export default function InvoicesList() {
+export default function InvoicesPage() {
     const [listInvoices, setListInvoices] = useState([])
     const [loadingState, setLoadingState] = useState(false)
 

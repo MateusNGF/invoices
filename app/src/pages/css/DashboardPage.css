@@ -1,0 +1,23 @@
+.graphic-container {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.graphic-container canvas {
+    max-width: 100%; /* Defina uma largura máxima para os gráficos */
+    height: auto; /* Garanta que a altura seja ajustada automaticamente para manter a proporção */
+}
+
+/* Ajuste o tamanho dos gráficos em telas menores, se necessário */
+@media (max-width: 768px) {
+    .graphic-container {
+        flex-direction: column; /* Empilhe os gráficos em telas menores */
+        justify-content: center;
+    }
+
+    .graphic-container canvas {
+        max-width: 100%; /* Garanta que os gráficos ocupem a largura total da tela */
+    }
+}

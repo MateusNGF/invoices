@@ -31,4 +31,10 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+
+
+
+Caso de erro de banco de dados : The table `public.invoices` does not exist in the current database.
+rode o comando npm run prisma:table para resetar o banco.
 ```

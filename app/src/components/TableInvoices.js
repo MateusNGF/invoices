@@ -1,4 +1,4 @@
-import { formatarData } from "../utils/Date";
+import { abreviateDate } from "../utils/Date";
 import ButtonAction from "./ButtonComponent";
 
 import {formatCurrencyBRL} from '../utils/Currency'
@@ -26,7 +26,7 @@ export default function TableInvoices({ data, fnDonwload, fnDelete }) {
                 <td>{item.id ?? null}</td>
                 <td>{item.numberInvoice}</td>
                 <td>{item.numberClient}</td>
-                <td>{formatarData(item.competency)}</td>
+                <td>{abreviateDate(item.competency)}</td>
                 <td>{formatCurrencyBRL(item.totalPrice)}</td>
                 <td>
                   <ButtonAction
