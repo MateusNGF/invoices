@@ -1,13 +1,14 @@
-import './css/DashboardPage.css'
+import './css/DashboardPage.css';
 
-import {useState, useEffect} from 'react'
+import { useEffect, useState } from 'react';
 
 import GraphicComponent from "../components/GraphicComponent";
-import SearchBarComponent from "../components/SearchBarComponent";
 import LoadComponent from "../components/LoadComponent";
+import SearchBarComponent from "../components/SearchBarComponent";
 
-import ApiService from '../utils/Api'
 import { agroupInvoicesByDate } from "../services/InvoiceServices";
+import ApiService from '../utils/Api';
+import DashboardService from './services/DashboardService';
 
 export default function DashboardPage() {
     const [invoicesAgrupedByCompetency, setInvoicesAgrupedByCompetency] = useState({})
@@ -45,13 +46,13 @@ export default function DashboardPage() {
         labels: Object.keys(invoicesAgrupedByCompetency),
         datasets: [
             {
-                label: 'Consumo de energia eletrica - kWh',
-                data: calculateTotalQuantityEnergyConsumed(Object.values(invoicesAgrupedByCompetency)),
+                label: 'Consumo de Energia Elétrica - kWh',
+                data: DashboardService.calculateTotalQuantityEnergyConsumed(Object.values(invoicesAgrupedByCompetency)),
                 backgroundColor: '#AFF4C6',
             },
             {
-                label: 'Energia compensada GD - kWh',
-                data: calculateTotalQuantityEnergyCompensated(Object.values(invoicesAgrupedByCompetency)),
+                label: 'Energia Compensada GD - kWh',
+                data: DashboardService.calculateTotalQuantityEnergyCompensated(Object.values(invoicesAgrupedByCompetency)),
                 backgroundColor: '#96B5A1', // Cor diferente para o segundo conjunto de dados
 
             },
@@ -62,13 +63,13 @@ export default function DashboardPage() {
         labels: Object.keys(invoicesAgrupedByCompetency),
         datasets: [
             {
-                label: 'Valor total sem descontos - R$',
-                data: calculateTotalPriceEnergyConsumedWithoutGD(Object.values(invoicesAgrupedByCompetency)),
+                label: 'Valor total sem GD - R$',
+                data: DashboardService.calculateTotalPriceEnergyConsumedWithoutGD(Object.values(invoicesAgrupedByCompetency)),
                 backgroundColor: '#2C5C3C',
             },
             {
                 label: 'Economina GD - R$',
-                data: calculateSavingPriceWithGB(Object.values(invoicesAgrupedByCompetency)),
+                data: DashboardService.calculateSavingPriceWithGB(Object.values(invoicesAgrupedByCompetency)),
                 backgroundColor: '#618F70', // Cor diferente para o segundo conjunto de dados
             },
         ]
@@ -97,48 +98,4 @@ export default function DashboardPage() {
             }
         </div>
     );
-}
-
-
-
-function calculateTotalQuantityEnergyConsumed(invoicesInMonth = []) {
-    let debug = invoicesInMonth.map(month =>
-        month.reduce((acc, invoice) =>
-            acc + (invoice.energyElectrical?.quantity + invoice.energyScee?.quantity)
-            , 0))
-
-    console.log(debug);
-    return debug
-}
-
-function calculateTotalQuantityEnergyCompensated(invoicesInMonth = []) {
-    let debug = invoicesInMonth.map(month =>
-        month.reduce((acc, invoice) =>
-            acc + invoice.energyCompensated?.quantity, 0)
-        , 0)
-
-    console.log(debug);
-    return debug
-}
-
-
-function calculateTotalPriceEnergyConsumedWithoutGD(invoicesInMonth = []) {
-    let debug = invoicesInMonth.map(month =>
-        month.reduce((acc, invoice) =>
-            acc + (invoice.energyElectrical?.price + invoice.energyScee?.price + invoice?.municipalContribution)
-            , 0))
-
-    console.log(debug);
-    return debug
-}
-
-
-function calculateSavingPriceWithGB(invoicesInMonth = []) {
-    let debug = invoicesInMonth.map(month =>
-        month.reduce((acc, invoice) =>
-            acc + (Math.abs(invoice.energyCompensated?.price))
-            , 0))
-
-    console.log(debug);
-    return debug
 }
