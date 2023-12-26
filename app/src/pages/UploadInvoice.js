@@ -3,14 +3,17 @@ import { useState } from 'react'
 import axios from 'axios'
 
 import ButtonAction from '../components/ButtonComponent'
+import LoadingIndicator from '../components/LoadComponent'
 import PreviewPDFComponent from '../components/PreviewPDFComponent';
 
 export default function UploadInvoice() {
     const [fileSelected, setFileSelect] = useState(null);
+    const [uploadingFile, setUploadingFile] = useState(false);
 
     const onChangeFiles = (event) => {
-        const fileInputSelected  = document.getElementById('invoice-file').files[0]
-
+        const inputComponent =  document.getElementById('invoice-file')
+        const fileInputSelected  = inputComponent.files[0]
+        
         if (!fileInputSelected) return;
 
         setFileSelect({
@@ -20,22 +23,27 @@ export default function UploadInvoice() {
             size: fileInputSelected.size
         })
 
+        inputComponent.value = null
     }
 
     const onSubmitFiles = async (event) => {
+        if (!fileSelected) {
+            return alert('SELECIONE UM ARQUIVO!')
+        }
+
+        setUploadingFile(true)
         try{
             const data = new FormData();
             data.append('file', fileSelected.data);
     
-            await axios.post('http://localhost:5000/invoice/upload', data, {
-                onUploadProgress: progressEvent => {
-                    const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    console.log('progressEvent', progress)
-                }
-            })
+            const result = await axios.post('http://localhost:5000/invoice/upload', data)
 
+            alert(`Fatura Nº${result.data.numberInvoice} importada com sucesso.`)
+            setFileSelect(null)
         }catch(e){
-            console.error(e)
+            alert("Ocorreu um erro: " + e.message)
+        }finally{
+            setUploadingFile(false)
         }
     }
 
@@ -59,12 +67,17 @@ export default function UploadInvoice() {
                     />
                 </div>
             </div>
-            <div className='content-preview'>
-                {
-                    fileSelected && 
-                    (<PreviewPDFComponent srcs={[fileSelected.preview]}/>)
-                }
-            </div>
+            {
+                uploadingFile && <LoadingIndicator title={`Importando ${fileSelected.name}`} />
+            }
+            {
+                fileSelected &&
+                (
+                    <div className='content-preview'>
+                        <PreviewPDFComponent srcs={[fileSelected.preview]} />
+                    </div>
+                )
+            }
         </div>
     )
 }
