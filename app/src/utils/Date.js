@@ -27,7 +27,7 @@ export function formatarData(dateString) {
     return new Intl.DateTimeFormat('pt-BR', options).format(new Date(dateString));
   }
 
-  export function  abreviateDate(date){
+  export function abreviateDate(date){
     const month = new Date(date).getMonth() + 1
     const year = new Date(date).getFullYear()
     return `${months[month]}/${year}`

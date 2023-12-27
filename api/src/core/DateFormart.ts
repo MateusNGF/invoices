@@ -1,17 +1,17 @@
 class DateFormarter {
   private monthsAbbr = {
-    JAN: 0,
-    FEV: 1,
-    MAR: 2,
-    ABR: 3,
-    MAI: 4,
-    JUN: 5,
-    JUL: 6,
-    AGO: 7,
-    SET: 8,
-    OUT: 9,
-    NOV: 10,
-    DEZ: 11,
+    JAN: 1,
+    FEV: 2,
+    MAR: 3,
+    ABR: 4,
+    MAI: 5,
+    JUN: 6,
+    JUL: 7,
+    AGO: 8,
+    SET: 9,
+    OUT: 10,
+    NOV: 11,
+    DEZ: 12,
   };
 
   ParseFormatedDateMonthYearToDate(date: string) {
