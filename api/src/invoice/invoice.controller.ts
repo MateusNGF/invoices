@@ -36,7 +36,7 @@ export class InvoiceController {
   ) {
     return await this.invoiceService.listInvoices({
       skip: skip ? parseInt(skip) : 0,
-      take: take ? parseInt(take) : 10,
+      take: take ? parseInt(take) : 50,
       text: text && text !== 'null' ? text : null,
       startDate:
         startDate && startDate !== 'null'
