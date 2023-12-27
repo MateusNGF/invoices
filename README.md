@@ -18,4 +18,5 @@ This command will initialize the frontend application in React, the backend in N
 ANOTAÇÕES
 * o versionamento foi feito baseando em monorepo
 * o sistema não foi planeja para variação de unidade de medida.
+* os testes foram feitos apenas no frontend e somente em components, podem ser encontrados em **/test. 
 * não foi implementado sistema de ordenação

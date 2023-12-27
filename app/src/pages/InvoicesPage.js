@@ -43,8 +43,9 @@ export default function InvoicesPage() {
                 <LoadingIndicator title="Carregando lista de faturas" /> :
                 <TableInvoices
                     data={listInvoices}
-                    fnDonwload={() => {
-
+                    fnDonwload={async (item) => {
+                        const url = await ApiService.downloadInvoice(item.filename)
+                        window.open(url, '_blank')
                     }}
                     fnDelete={async (item) => {
                         const identificate = `Nº${item.numberInvoice}`
