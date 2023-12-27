@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 class ApiService {
     #url_api = process.env.REACT_APP_API_URL
 
@@ -11,15 +13,41 @@ class ApiService {
             where: filters?.where ? JSON.stringify(filters?.where) : null,
         })
 
-        const response = await fetch(`${this.#url_api}/invoice?${params.toString()}`, { method: 'GET' })
-        return response.json()
+        const { data } = await axios.get(`${this.#url_api}/invoice?${params.toString()}`)
+        return data
     }
 
 
-    async deleteInvoice(id){
-        const query = new URLSearchParams({id})
-        const response = await fetch(`${this.#url_api}/invoice?${query.toString()}}`, { method: 'DELETE' })
-        return response.json()
+    async deleteInvoice(id) {
+        const query = new URLSearchParams({ id })
+        const { data } = await axios.delete(`${this.#url_api}/invoice?${query.toString()}}`)
+        return data
+    }
+
+    async uploadInvoice(data, { onProgress }) {
+        const response = await axios.post(`${this.#url_api}/invoice/upload`, data, {
+            onUploadProgress: (progressEvent) => {
+                const { loaded, total } = progressEvent
+                const progress = Math.round((loaded * 100) / total)
+                onProgress(progress)
+            }
+        })
+
+        return response.data
+    }
+    async downloadInvoice(filename) {
+        const query = new URLSearchParams({ filename })
+        const response = await axios.get(
+            `${this.#url_api}/invoice/download?${query.toString()}}`,
+            { responseType: 'stream' }
+        )
+
+        const streamToBlob = new Blob(
+            [response.data],
+            { type: response.headers['content-type'] }
+        );
+        const blobURL = window.URL.createObjectURL(streamToBlob);
+        return blobURL
     }
 }
 
