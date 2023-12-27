@@ -86,10 +86,12 @@ export default function DashboardPage() {
                     (
                         <div className="graphic-container">
                             <GraphicComponent
+                                title='Análise de Consumo - kWh/Mês'
                                 labels={quantityAnalysisInKwh.labels}
                                 datasets={quantityAnalysisInKwh.datasets}
                             />
                              <GraphicComponent
+                                title='Análise dos Custos - R$/Mês'
                                 labels={spendingAnalysisInReais.labels}
                                 datasets={spendingAnalysisInReais.datasets}
                             />

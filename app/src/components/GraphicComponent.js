@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 
 
 
-export default function GraphicComponent({ labels = [], datasets = [], onHouver = () => {} }) {
+export default function GraphicComponent({ title = "Gráfico", labels = [], datasets = [], onHouver = () => {} }) {
   const  configureContentGraphic = {
     labels: labels, // meses
     datasets: datasets,
@@ -21,13 +21,22 @@ export default function GraphicComponent({ labels = [], datasets = [], onHouver 
       tooltip: {
         enabled: true, // Habilita a exibição da tooltip
       },
-    },
-    onHover: (event, chartElement) => {
-      if (chartElement.length){
-        const index = chartElement[0].index;
-        onHouver(index)
-      }
-    },
+      title: {
+        display: true,
+        text: title,
+        font: {
+          size: 20, // Tamanho da fonte do título
+        }
+      },
+      legend: {
+        display: true,
+        labels: {
+          font: {
+            size: 15, // Tamanho da fonte da legenda
+          }
+        }
+      },
+    }
   };
 
   return (
