@@ -1,4 +1,4 @@
-test
+**/test/**
 *.test.*
 *.spec.*
 node_modules
