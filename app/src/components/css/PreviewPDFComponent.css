@@ -1,10 +1,22 @@
-
-
-
-.conteinar-preview {
-    display: flex;
+.container-preview {
+    display: grid;
     width: 100%;
-    justify-content: center;
-    align-content: center;
-    justify-content: space-around;
-}
+    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+    gap: 20px;
+  }
+  
+  .preview-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .index-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .preview-embed {
+    width: 100%;
+    height: 600px; /* Ajuste o valor conforme necessário para aumentar ou diminuir a altura */
+  }

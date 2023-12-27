@@ -7,46 +7,58 @@ import LoadingIndicator from '../components/LoadComponent'
 import PreviewPDFComponent from '../components/PreviewPDFComponent'
 
 export default function UploadInvoice() {
-    const [fileSelected, setFileSelect] = useState(null);
+    const [filesSelected, setFilesSelect] = useState([]);
     const [uploadingFile, setUploadingFile] = useState(false);
+    const [currentFileUpload, setCurrentFileUpload] = useState(null);
 
     const onChangeFiles = (event) => {
         const inputComponent =  document.getElementById('invoice-file')
-        const fileInputSelected  = inputComponent.files[0]
+        const filesInputSelected  = inputComponent.files
         
-        if (!fileInputSelected) return;
+        if (!filesInputSelected || !filesInputSelected.length) return;
 
-        setFileSelect({
-            data : fileInputSelected,
-            preview: URL.createObjectURL(fileInputSelected),
-            name: fileInputSelected.name,
-            size: fileInputSelected.size
-        })
+        console.log(filesInputSelected)
+
+
+        setFilesSelect(
+            Array.from(filesInputSelected).map(
+                (file => ({
+                    data: file,
+                    preview: URL.createObjectURL(file),
+                    name: file.name,
+                    size: file.size
+                }))
+            )
+        )
 
         inputComponent.value = null
     }
 
     const onSubmitFiles = async (event) => {
-        if (!fileSelected) {
-            return alert('SELECIONE UM ARQUIVO!')
+        if (!filesSelected.length) {
+            return alert('SELECIONE PELO MENOS UM ARQUIVO!')
         }
 
-        setUploadingFile(true)
-        try{
-            const data = new FormData();
-            data.append('file', fileSelected.data);
+        for (const file of filesSelected) {
+            setCurrentFileUpload(file)
+            setUploadingFile(true)
+            try{
+                console.log(file)
+                const data = new FormData();
+                data.append('file', file.data);
+        
+                const result = await axios.post('http://localhost:5000/invoice/upload', data)
     
-            const result = await axios.post('http://localhost:5000/invoice/upload', data)
-
-            alert(`Fatura Nº${result.data.numberInvoice} importada com sucesso.`)
-            setFileSelect(null)
-        }catch(e){
-            alert("Ocorreu um erro: " + e.message)
-        }finally{
-            setUploadingFile(false)
+                alert(`Fatura Nº${result.data.numberInvoice} importada com sucesso.`)
+                setCurrentFileUpload(null)
+            }catch(e){
+                alert("Ocorreu um erro: " + e.message)
+            }finally{
+                setUploadingFile(false)
+            }
         }
+        setFilesSelect(null)
     }
-
 
     return (
         <div className="container-upload-invoice">
@@ -58,6 +70,7 @@ export default function UploadInvoice() {
                     onChange={onChangeFiles}
                     placeholder="Selecione um ou varios arquivos"
                     accept="application/pdf"
+                    multiple
                 />
                 <div className="footer-upload-invoice">
                     <ButtonAction
@@ -68,13 +81,16 @@ export default function UploadInvoice() {
                 </div>
             </div>
             {
-                uploadingFile && <LoadingIndicator title={`Importando ${fileSelected.name}`} />
+                uploadingFile && <LoadingIndicator title={`Importando ${currentFileUpload.name}`} />
             }
             {
-                fileSelected &&
+                filesSelected &&
                 (
                     <div className='content-preview'>
-                        <PreviewPDFComponent srcs={[fileSelected.preview]} />
+                        <PreviewPDFComponent content={filesSelected.map(file => ({
+                            name: file.name,
+                            src: file.preview
+                        }))} />
                     </div>
                 )
             }
