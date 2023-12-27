@@ -44,8 +44,15 @@ export default function InvoicesPage() {
                 <TableInvoices
                     data={listInvoices}
                     fnDonwload={async (item) => {
-                        const url = await ApiService.downloadInvoice(item.filename)
-                        window.open(url, '_blank')
+                        const url = await ApiService.downloadInvoice(item.fileName)
+
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = item.fileName;
+                        link.click();
+
+                        // Libere a URL criada anteriormente
+                        window.URL.revokeObjectURL(url);
                     }}
                     fnDelete={async (item) => {
                         const identificate = `Nº${item.numberInvoice}`
@@ -57,6 +64,7 @@ export default function InvoicesPage() {
 
                         setListInvoices(listInvoices.filter((invoice) => invoice.id !== item.id))
                         alert(`Fatura ${identificate} excluída com sucesso`)
+                        return;
                     }}
                 />
             }

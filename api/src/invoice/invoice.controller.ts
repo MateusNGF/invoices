@@ -70,16 +70,23 @@ export class InvoiceController {
       return await this.invoiceService.processInformationPDFtoJSON(file);
     } catch (e) {
       console.error(e);
+      return;
     }
   }
 
   @Get('/download')
   async downloadFile(@Query('filename') filename: string, @Res() res: Response) {
-    const fileStream = createReadStream(`./tmp/invoices/pdf/${filename}`);
-
-    res.setHeader('Content-Type', 'application/octet-stream');
-    res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
-
-    fileStream.pipe(res);
+    try{
+      if (!filename) {return}
+      const fileStream = createReadStream(`./tmp/invoices/pdf/${filename}`);
+  
+      res.setHeader('Content-Type', 'application/octet-stream');
+      res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
+  
+      fileStream.pipe(res);
+    }catch(e){
+      console.error(e)
+      return;
+    }
   }
 }

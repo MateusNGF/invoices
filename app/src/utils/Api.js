@@ -38,7 +38,7 @@ class ApiService {
     async downloadInvoice(filename) {
         const query = new URLSearchParams({ filename })
         const response = await axios.get(
-            `${this.#url_api}/invoice/download?${query.toString()}}`,
+            `${this.#url_api}/invoice/download?${query.toString()}`,
             { responseType: 'stream' }
         )
 
@@ -46,8 +46,7 @@ class ApiService {
             [response.data],
             { type: response.headers['content-type'] }
         );
-        const blobURL = window.URL.createObjectURL(streamToBlob);
-        return blobURL
+        return  window.URL.createObjectURL(streamToBlob);
     }
 }
 
