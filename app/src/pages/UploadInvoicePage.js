@@ -10,15 +10,13 @@ export default function UploadInvoice() {
     const [filesSelected, setFilesSelect] = useState([]);
     const [uploadingFile, setUploadingFile] = useState(false);
     const [currentFileUpload, setCurrentFileUpload] = useState(null);
-
+    const [progress, setProgress] = useState(0);
+    
     const onChangeFiles = (event) => {
         const inputComponent =  document.getElementById('invoice-file')
         const filesInputSelected  = inputComponent.files
         
         if (!filesInputSelected || !filesInputSelected.length) return;
-
-        console.log(filesInputSelected)
-
 
         setFilesSelect(
             Array.from(filesInputSelected).map(
@@ -43,11 +41,16 @@ export default function UploadInvoice() {
             setCurrentFileUpload(file)
             setUploadingFile(true)
             try{
-                console.log(file)
                 const data = new FormData();
                 data.append('file', file.data);
         
-                const result = await axios.post('http://localhost:5000/invoice/upload', data)
+                const result = await axios.post('http://localhost:5000/invoice/upload', data, {
+                    onUploadProgress: (progressEvent) => {
+                        const { loaded, total } = progressEvent
+                        const progress = Math.round((loaded * 100) / total)
+                        setProgress(progress)
+                    }
+                })
     
                 alert(`Fatura Nº${result.data.numberInvoice} importada com sucesso.`)
                 setCurrentFileUpload(null)
@@ -81,7 +84,7 @@ export default function UploadInvoice() {
                 </div>
             </div>
             {
-                uploadingFile && <LoadingIndicator title={`Importando ${currentFileUpload.name}`} />
+                uploadingFile && <LoadingIndicator title={`Importando ${currentFileUpload.name} - ${progress}%`} />
             }
             {
                 filesSelected &&
