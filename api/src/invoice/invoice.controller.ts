@@ -31,12 +31,13 @@ export class InvoiceController {
     @Query('take') take: string,
     @Query('text') text: string,
     @Query('where') where: any,
+    @Query('orderBy') orderBy: any,
     @Query('startDate') startDate: string,
     @Query('endDate') endDate: string,
   ) {
     return await this.invoiceService.listInvoices({
-      skip: skip ? parseInt(skip) : 0,
-      take: take ? parseInt(take) : 50,
+      skip: parseInt(skip),
+      take: parseInt(take),
       text: text && text !== 'null' ? text : null,
       startDate:
         startDate && startDate !== 'null'
@@ -45,6 +46,7 @@ export class InvoiceController {
       endDate:
         endDate && endDate !== 'null' ? new Date(endDate).toISOString() : null,
       where: JSON.parse(where) ?? {},
+      orderBy: JSON.parse(orderBy) ?? {},
     });
   }
 

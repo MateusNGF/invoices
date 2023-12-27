@@ -31,7 +31,11 @@ export default function DashboardPage() {
         setLoadingState(true)
         try{
             setInvoicesAgrupedByCompetency({})
-            const invoices = await ApiService.listInvoicesByFilters(filters);
+            const invoices = await ApiService.listInvoicesByFilters({
+                take : 500,
+                skip: 0,
+                ...filters
+            });
             setInvoicesAgrupedByCompetency(agroupInvoicesByDate(invoices))
         }catch(e){
             alert("Não foi possivel atualizar a lista de faturas.")

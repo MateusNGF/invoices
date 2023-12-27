@@ -20,7 +20,12 @@ export default function InvoicesPage() {
         setLoadingState(true)
         try{
             setListInvoices([])
-            const invoices = await ApiService.listInvoicesByFilters(filters);
+            const invoices = await ApiService.listInvoicesByFilters({
+                ...filters,
+                orderBy : {
+                    createdAt : 'desc'
+                }
+            });
             setListInvoices(invoices)
         }catch(e){
             alert("Não foi possivel atualizar a lista de faturas.")

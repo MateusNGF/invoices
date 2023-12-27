@@ -5,12 +5,13 @@ class ApiService {
 
     async listInvoicesByFilters(filters){
         const params = new URLSearchParams({
-            skip:  '0',
-            take: '30',
+            skip: filters?.skip ?? 0,
+            take: filters?.take ?? 100,
             text: filters?.text ?? null,
             startDate: filters?.startDate ?? null,
             endDate: filters?.endDate ?? null,
             where: filters?.where ? JSON.stringify(filters?.where) : null,
+            orderBy: filters?.orderBy ? JSON.stringify(filters?.orderBy) : null
         })
 
         const { data } = await axios.get(`${this.#url_api}/invoice?${params.toString()}`)
