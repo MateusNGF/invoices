@@ -1,4 +1,4 @@
-import { BarElement, CategoryScale, Chart as ChartJS, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from 'chart.js';
+import { BarElement, CategoryScale, Chart as ChartJS, Filler, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from 'chart.js';
 import AnnotationPlugin from 'chartjs-plugin-annotation';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -13,6 +13,7 @@ ChartJS.register(
   PointElement,
   LineElement,
   BarElement,
+  Filler,
   Title,
   Tooltip,
   Legend

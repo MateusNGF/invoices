@@ -52,13 +52,24 @@ export default function DashboardPage() {
             {
                 label: 'Consumo de Energia Elétrica - kWh',
                 data: DashboardService.calculateTotalQuantityEnergyConsumed(Object.values(invoicesAgrupedByCompetency)),
-                backgroundColor: '#AFF4C6',
+                backgroundColor: 'rgba(177,88,78, 1)',
+                borderColor: 'rgba(177,88,78, 1)',
+                borderWidth: 2,
+                fill: {
+                    target: '1',
+                    above: 'rgba(177,88,78, 0.4)',
+                }
             },
             {
                 label: 'Energia Compensada GD - kWh',
                 data: DashboardService.calculateTotalQuantityEnergyCompensated(Object.values(invoicesAgrupedByCompetency)),
-                backgroundColor: '#96B5A1', // Cor diferente para o segundo conjunto de dados
-
+                backgroundColor: 'rgba(50,139,91, 1)', // Cor diferente para o segundo conjunto de dados
+                borderColor: 'rgba(50,139,91, 1)',
+                borderWidth: 2,
+                fill: {
+                    target: 'origin',
+                    above: 'rgba(50,139,91, 0.4)',
+                }
             },
         ]
     }
@@ -69,12 +80,24 @@ export default function DashboardPage() {
             {
                 label: 'Valor total sem GD - R$',
                 data: DashboardService.calculateTotalPriceEnergyConsumedWithoutGD(Object.values(invoicesAgrupedByCompetency)),
-                backgroundColor: '#2C5C3C',
+                backgroundColor: 'rgba(177,88,78, 1)',
+                borderColor: 'rgba(177,88,78, 1)',
+                borderWidth: 2,
+                fill: {
+                    target: '1',
+                    above: 'rgba(177,88,78, 0.4)',
+                }
             },
             {
                 label: 'Economina GD - R$',
                 data: DashboardService.calculateSavingPriceWithGB(Object.values(invoicesAgrupedByCompetency)),
-                backgroundColor: '#618F70', // Cor diferente para o segundo conjunto de dados
+                backgroundColor: 'rgba(50,139,91, 1)', // Cor diferente para o segundo conjunto de dados
+                borderColor: 'rgba(50,139,91, 1)',
+                borderWidth: 2,
+                fill: {
+                    target: 'origin',
+                    above: 'rgba(50,139,91, 0.4)',
+                }
             },
         ]
     }

@@ -38,15 +38,26 @@ export class InvoiceController {
     return await this.invoiceService.listInvoices({
       skip: parseInt(skip),
       take: parseInt(take),
-      text: text && text !== 'null' ? text : null,
+      text:
+        text && text !== 'null'
+          ? text
+          : null,
       startDate:
         startDate && startDate !== 'null'
           ? new Date(startDate).toISOString()
           : null,
       endDate:
-        endDate && endDate !== 'null' ? new Date(endDate).toISOString() : null,
-      where: JSON.parse(where) ?? {},
-      orderBy: JSON.parse(orderBy) ?? {},
+        endDate && endDate !== 'null'
+          ? new Date(endDate).toISOString()
+          : null,
+      where:
+        where && where !== 'null'
+          ? JSON.parse(where)
+          : {},
+      orderBy:
+        orderBy && orderBy !== 'null'
+          ? JSON.parse(orderBy)
+          : {},
     });
   }
 
