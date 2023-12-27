@@ -1,11 +1,13 @@
+import { BarElement, CategoryScale, Chart as ChartJS, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from 'chart.js';
+import AnnotationPlugin from 'chartjs-plugin-annotation';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Chart as ChartJS, CategoryScale, Legend, LineElement, LinearScale, PointElement, Title, Tooltip, BarElement } from 'chart.js';
 
 ChartJS.register(
+  AnnotationPlugin,
   CategoryScale,
   LinearScale,
   PointElement,

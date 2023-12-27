@@ -1,6 +1,6 @@
 import './css/GraphicComponent.css';
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Line} from 'react-chartjs-2';
 
 
 
@@ -41,7 +41,7 @@ export default function GraphicComponent({ title = "Gráfico", labels = [], data
 
   return (
     <div className="graphic-container">
-        <Bar data={configureContentGraphic} options={optionsToPlotGraphic} />
+        <Line data={configureContentGraphic} options={optionsToPlotGraphic} />
     </div>
   );
 };
