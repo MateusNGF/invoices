@@ -5,12 +5,14 @@ import {
   Get,
   Post,
   Query,
+  Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { readFileSync } from 'fs';
+import { createReadStream, readFileSync } from 'fs';
 import { diskStorage } from 'multer';
+import { Response } from'express'
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { InvoiceService } from './invoice.service';
 
@@ -72,7 +74,12 @@ export class InvoiceController {
   }
 
   @Get('/download')
-  async downloadFile(@Query('filename') filename: string) {
-    return readFileSync(` ${filename}`);
+  async downloadFile(@Query('filename') filename: string, @Res() res: Response) {
+    const fileStream = createReadStream(`./tmp/invoices/pdf/${filename}`);
+
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
+
+    fileStream.pipe(res);
   }
 }

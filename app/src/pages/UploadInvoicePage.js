@@ -1,10 +1,10 @@
-import axios from 'axios'
 import { useState } from 'react'
 import './css/UploadInvoicePage.css'
 
 import ButtonAction from '../components/ButtonComponent'
 import LoadingIndicator from '../components/LoadComponent'
 import PreviewPDFComponent from '../components/PreviewPDFComponent'
+import Api from '../utils/Api'
 
 export default function UploadInvoice() {
     const [filesSelected, setFilesSelect] = useState([]);
@@ -33,10 +33,12 @@ export default function UploadInvoice() {
     }
 
     const onSubmitFiles = async (event) => {
+        
         if (!filesSelected.length) {
             return alert('SELECIONE PELO MENOS UM ARQUIVO!')
         }
-
+        
+        const uploaded = []
         for (const file of filesSelected) {
             setCurrentFileUpload(file)
             setUploadingFile(true)
@@ -44,22 +46,21 @@ export default function UploadInvoice() {
                 const data = new FormData();
                 data.append('file', file.data);
         
-                const result = await axios.post('http://localhost:5000/invoice/upload', data, {
-                    onUploadProgress: (progressEvent) => {
-                        const { loaded, total } = progressEvent
-                        const progress = Math.round((loaded * 100) / total)
-                        setProgress(progress)
-                    }
+                const result = await Api.uploadInvoice(data, {
+                    onProgress: setProgress
                 })
     
-                alert(`Fatura Nº${result.data.numberInvoice} importada com sucesso.`)
+                uploaded.push(`${uploaded.length + 1}º - Fatura Nº${result.numberInvoice} importada com sucesso.`)
                 setCurrentFileUpload(null)
             }catch(e){
+                uploaded.push(`${uploaded.length + 1}º - Falha ao importar a fatura.`)
                 alert("Ocorreu um erro: " + e.message)
             }finally{
                 setUploadingFile(false)
             }
         }
+
+        alert(uploaded.join('\n'))
         setFilesSelect(null)
     }
 
