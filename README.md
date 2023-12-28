@@ -30,6 +30,9 @@ Ademais, o software tambem tem suporte para utilização no `Docker`.
 
 ## INICIALIZANDO
 
+> Você pode assistir o video onde faço tudo do zero: https://youtu.be/MPFh42cN0V4
+<br>
+
 Para inicializar o projeto, certifique-se que você tenha os devidos pré requisitos antes de executar os comandos de inicialização.
 
 ```
@@ -40,6 +43,14 @@ Para inicializar o projeto, certifique-se que você tenha os devidos pré requis
 
 Feitas as devidas verificações dos pré requisitos, depois você `terá que criar os .env em cada serviço APP e API`, 
 podendo deixa-los vazios pois as únicas variáveis necessárias o docker compose já faz a inserção na composição. 
+
+.env da API e APP, respectivamente: 
+```bash
+DATABASE_URL='postgres://admin:admin@localhost:5432/invoice-production'
+```
+```bash
+REACT_APP_API_URL='http://localhost:5000'
+```
 
 Agora você precisará executar alguns comandos para preparar o ambiente.
 
