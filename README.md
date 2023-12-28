@@ -4,12 +4,8 @@
   <img src="./documents/img/homepage.png" width="100%" alt="preview app" />
 </p>
 
-  O projeto Faturas, é uma aplicação que gerencia contas(faturas) de energia, exclusivamente da CEMIG, dispondo de visualização das faturas processas e e sessão de análise das mesmas, observando a quantidade e os custos do consumo de energia.
-
-  Este faz parte de um teste prático realizado pela empresa Lumi para vaga de FullStack. 
-Tendo como objetivo cumprir alguns pontos de pré requisitos dos sistemas e tecnicos no desenvolvimento.
-
-O Layout inicial do projeto pode ser encontrado no Figma. <a href="https://www.figma.com/file/0lHddW3Nki4u2khZiriXXq/Untitled?type=whiteboard&node-id=0%3A1&t=GwbVcBDEcFg02gku-1" target="_blank" >Clique para acessar</a>
+  O projeto Faturas, é uma aplicação que gerencia contas(faturas) de energia, exclusivamente da CEMIG, dispondo de visualização das faturas processadas e uma secção de análise das mesmas, observando a quantidade e os custos do consumo de energia. Este faz parte de um teste prático realizado pela empresa Lumi para vaga de FullStack. 
+Tendo como objetivo cumprir alguns pontos de pré requisitos dos sistemas e tecnicos no desenvolvimento. O Layout inicial do projeto pode ser encontrado no Figma. <a href="https://www.figma.com/file/0lHddW3Nki4u2khZiriXXq/Untitled?type=whiteboard&node-id=0%3A1&t=GwbVcBDEcFg02gku-1" target="_blank" >Clique para acessar</a>
 
 
 ## CONSIDERAÇÕES
@@ -17,9 +13,8 @@ Nesta secção será abordado as questões tecnicas do desenvolvimento. Portanto
   
 No que tange ao versionamento foi definido a implementação de monorepository, isso significa que a API e o APP são versionando na mesmo repositório. O padrão de commits utilizado foi o <a href="https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657" target="_blank" > conventional commits pattern </a>.  
 
-A sistema foi dividida é dividida em duas serviços, o serviço Frontend (APP) e o serviço Backend (API).<br>
-Todas as aplicações utilizam `NodeJs`.<br> 
-O App foi construida utilizando o framework `React`. <br>
+A sistema foi dividida em dois serviços, o serviço Frontend (APP) e o serviço Backend (API) e todas as aplicações utilizam `NodeJs`.<br> 
+O APP foi construida utilizando o framework `React`.<br>
 A API foi construida com o framework `NestJS` no padrão `Controller-Service-Repository` utilizando um bando de dados SQL via framework `Prisma`.
 
 Ademais, o software tambem tem suporte para utilização no `Docker`.
@@ -30,7 +25,7 @@ Ademais, o software tambem tem suporte para utilização no `Docker`.
 * Outro ponto importante, são os testes que foram feitos apenas no APP em `Components` e `Services` , podendo ser encontrados em **/test e executados dentro da pasta ./app rodando o comando `npm run test`.<br>
   * Ao inicializar o comando de test pressione a tecla a e ele executará todos os testes.
 <div align="center">
-  <img src="./documents/img/test-img.png" width="40%" alt="preview app" />
+  <img src="./documents/img/test-img.png" width="70%" alt="preview test" />
 </div>
 
 ## INICIALIZANDO
@@ -66,6 +61,18 @@ Se não ocorreu nenhum erro, no Windows você pode acessar a interface e verá a
     <img src="./documents/img/docker-preview.png" width="70%" alt="preview docker" />
     <p>Imagem do Docker mostrando os serviços ativos</p>
 </div>
+
+
+Apos realizar todas essas operações, você poderá acessar atráves do endereço http://localhost:3000/
+
+<h2 align="center"> 
+  <a href="http://localhost:3000/" target="_blank" > 
+    ACESSAR APLICAÇÃO
+  </a> 
+</h2>
+
+<br><br>
+
 
 
 
