@@ -16,7 +16,10 @@ This command will initialize the frontend application in React, the backend in N
 
 
 ANOTAÇÕES
+* ao baixar o projeto execute o comando deps:api para que o sistema consiga gerar o binário e então gerar a imagem docker.
 * o versionamento foi feito baseando em monorepo
 * o sistema não foi planeja para variação de unidade de medida.
 * os testes foram feitos apenas no frontend e somente em components, podem ser encontrados em **/test. 
 * não foi implementado sistema de ordenação
+* Em algum lugar do upload ou donwload esta perdendo informação e deteriorando o arquivo, desafio de correção.
+*

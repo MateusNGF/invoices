@@ -7,6 +7,9 @@
     "dck:build:app" : "cd app && npm run dck:img",
     "dck:build:api" : "cd api && npm run dck:img",
     "dck:build" : "npm run dck:build:app && npm run dck:build:api",
+    "deps:api" : "cd api && npm install",
+    "deps:app" : "cd app && npm install",
+    "deps" : "npm run init:app && npm run init:api",
     "dck:compose" : "npm run dck:build && docker compose up -d",
     "dck:composev2" : "npm run dck:build && docker-compose up -d"
   },
