@@ -1,25 +1,57 @@
 # FATURAS - Gerenciando suas economias energéticas 
 
 <p align="center">
-  <img src="./documents/img/homepage.png" width="200" alt="Nest Logo" />
+  <img src="./documents/img/homepage.png" width="100%" alt="preview app" />
 </p>
 
+  O projeto Faturas, é uma aplicação que gerencia contas(faturas) de energia, exclusivamente da CEMIG, dispondo de visualização das faturas processas e e sessão de análise das mesmas, observando a quantidade e os custos do consumo de energia.
 
-# Getting Started
+  Este faz parte de um teste prático realizado pela empresa Lumi para vaga de FullStack. 
+Tendo como objetivo cumprir alguns pontos de pré requisitos dos sistemas e tecnicos no desenvolvimento.
+
+O Layout inicial do projeto pode ser encontrado no Figma. <a href="https://www.figma.com/file/0lHddW3Nki4u2khZiriXXq/Untitled?type=whiteboard&node-id=0%3A1&t=GwbVcBDEcFg02gku-1" target="_blank" >Clique para acessar</a>
 
 
-To run the project on your machine, check the following requirements:
+## CONSIDERAÇÕES
+Nesta secção será abordado as questões tecnicas do desenvolvimento. Portanto, é de extrema importância sua leitura e entendimento.
+  
+No que tange ao versionamento foi definido a implementação de monorepository, isso significa que a API e o APP são versionando na mesmo repositório. O padrão de commits utilizado foi o <a href="https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657" target="_blank" > conventional commits pattern </a>.  
 
-- Nodejs version **^18.0.0**.
-- Docker installed on your machine.
+A aplicação foi dividida é dividida em duas serviços, o serviço Frontend (APP) e o serviço Backend (API). Todas as aplicações utilizam `NodeJs`. O App foi construida utilizando o framework `React`. No entanto, a API foi construida com o framework `NestJS` no padrão `Controller-Service-Repository` utilizando um bando de dados SQL via framework `Prisma`. Ademais, o software tambem tem suporte para utilização no `Docker`.
 
-Then, in the root of the project, run the following command to build the application and initialize its entire ecosystem.
+## INICIALIZANDO
 
- >> ### `npm run dck:compose`
+Para inicializar o projeto, certifique-se que você tenha os devidos pré requisitos antes de executar os comandos de inicialização.
 
-> **Note!** An error may occur and the docker compose command is not found, so try running the command: `npm run dck:composev2`. This will resolve it
+```
+- Docker version ^23.0.5, build bc4487a.
+- Nodejs version 18.0.0.
+```
+> **!Note** que não é necessário ter o Docker, mas essa documentação, inicialmente, será feita baseando-se apenas nele.
 
-This command will initialize the frontend application in React, the backend in Node, the database in Postgres and, finally, a database manager to be able to access the database, which is not necessary for initialization and becomes an aid in debugging. 
+Feitas as devidas verificações dos pré requisitos, depois você `terá que criar os .env em cada serviço APP e API`, 
+podendo deixa-los vazios pois as únicas variáveis necessárias o docker compose já faz a inserção na composição. 
+Agora você precisará executar alguns comandos para preparar o ambiente.
+O primeiro comando, referece a instalação das dependencias e  
+O segundo faz todo o trabalho de construir as imagens e montar todo o ecossistema da aplicação.
+
+Na pasta raiz do projeto - _onde estão o APP e API_ - execute os seguintes comandos.
+
+```bash
+npm run deps
+npm run dck:compose
+```
+
+> **!Note** Pode haver um erro ao executar o comando de compose dizendo que o comando docker compose não foi encontrado, neste caso tente rodar esse comando `npm run dck:composev2`.
+
+<br>
+Se não ocorreu nenhum erro, no Windows você pode acessar a interface e verá algo parecido com isso:
+
+<div align="center">
+    <img src="./documents/img/docker-preview.png" width="70%" alt="preview docker" />
+    <p>Imagem do Docker mostrando os serviços ativos</p>
+</div>
+
 
 
 ANOTAÇÕES
