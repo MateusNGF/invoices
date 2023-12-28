@@ -2,6 +2,7 @@ services:
   invoices-app:
     image: invoices-app
     container_name: invoices-app
+    restart: always
     environment:
       - REACT_APP_API_URL=http://localhost:5000
     ports:
@@ -14,6 +15,7 @@ services:
   invoices-api:
     image: invoices-api
     container_name: invoices-api
+    restart: always
     environment:
       - DATABASE_URL=postgres://admin:admin@invoices-db:5432/invoice-production;
     ports:
@@ -26,6 +28,7 @@ services:
   invoices-db:
     image: postgres:latest
     container_name: invoices-db
+    restart: always
     environment:
       POSTGRES_DB: invoice-production
       POSTGRES_USER: admin
