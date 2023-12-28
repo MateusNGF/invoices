@@ -1,3 +1,10 @@
+# FATURAS - Gerenciando suas economias energéticas 
+
+<p align="center">
+  <img src="./documents/img/homepage.png" width="200" alt="Nest Logo" />
+</p>
+
+
 # Getting Started
 
 
@@ -23,3 +30,5 @@ ANOTAÇÕES
 * não foi implementado sistema de ordenação
 * Em algum lugar do upload ou donwload esta perdendo informação e deteriorando o arquivo, desafio de correção.
 *
+
+
