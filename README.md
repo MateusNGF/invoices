@@ -5,17 +5,17 @@
 </p>
 
   O projeto Faturas, é uma aplicação que gerencia contas(faturas) de energia, exclusivamente da CEMIG, dispondo de visualização das faturas processadas e uma secção de análise das mesmas, observando a quantidade e os custos do consumo de energia. Este faz parte de um teste prático realizado pela empresa Lumi para vaga de FullStack. 
-Tendo como objetivo cumprir alguns pontos de pré requisitos dos sistemas e tecnicos no desenvolvimento. O Layout inicial do projeto pode ser encontrado no Figma. <a href="https://www.figma.com/file/0lHddW3Nki4u2khZiriXXq/Untitled?type=whiteboard&node-id=0%3A1&t=GwbVcBDEcFg02gku-1" target="_blank" >Clique para acessar</a>
+Tendo como objetivo cumprir alguns pontos de pré requisitos do sistema e tecnicos do desenvolvimento. O Layout inicial do projeto pode ser encontrado no Figma. <a href="https://www.figma.com/file/0lHddW3Nki4u2khZiriXXq/Untitled?type=whiteboard&node-id=0%3A1&t=GwbVcBDEcFg02gku-1" target="_blank" >Clique para acessar</a>
 
 
 ## CONSIDERAÇÕES
 Nesta secção será abordado as questões tecnicas do desenvolvimento. Portanto, é de extrema importância sua leitura e entendimento.
   
-No que tange ao versionamento foi definido a implementação de monorepository, isso significa que a API e o APP são versionando na mesmo repositório. O padrão de commits utilizado foi o <a href="https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657" target="_blank" > conventional commits pattern </a>.  
+No que tange ao versionamento foi definido a implementação de monorepository, isso significa que a API e o APP são versionando no mesmo repositório. O padrão de commits utilizado foi o <a href="https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657" target="_blank" > conventional commits pattern </a>.  
 
-A sistema foi dividida em dois serviços, o serviço Frontend (APP) e o serviço Backend (API) e todas as aplicações utilizam `NodeJs`.<br> 
-O APP foi construida utilizando o framework `React`.<br>
-A API foi construida com o framework `NestJS` no padrão `Controller-Service-Repository` utilizando um bando de dados SQL via framework `Prisma`.
+O sistema foi dividida em dois serviços, o serviço Frontend (APP) e o serviço Backend (API) e todas as aplicações utilizam `NodeJs`.<br> 
+O APP foi construido utilizando o framework `React`.<br>
+A API foi construida utilizando o framework `NestJS`, no padrão `Controller-Service-Repository` utilizando um bando de dados SQL via framework `Prisma`.
 
 Ademais, o software tambem tem suporte para utilização no `Docker`.
 
