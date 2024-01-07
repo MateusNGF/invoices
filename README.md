@@ -8,6 +8,10 @@
 Tendo como objetivo cumprir alguns pontos de pré requisitos do sistema e tecnicos do desenvolvimento. O Layout inicial do projeto pode ser encontrado no Figma. <a href="https://www.figma.com/file/0lHddW3Nki4u2khZiriXXq/Untitled?type=whiteboard&node-id=0%3A1&t=GwbVcBDEcFg02gku-1" target="_blank" >Clique para acessar</a>
 
 <br>
+
+> Veja a versão dois : https://github.com/MateusNGF/Invoices/tree/version-two
+
+
 <p>
   <h2 align="center"> CONSIDERAÇÕES </h2>
 </p>
